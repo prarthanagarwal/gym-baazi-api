@@ -1,0 +1,14 @@
+node_modules/
+.env.local
+.env
+.vercel/
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+# Don't ignore transformed API files
+!exercisedb_data/*_api.json
+
+# Don't ignore gifs folder (but it's large)
+# Consider using Git LFS for gifs folder
