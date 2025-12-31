@@ -1,0 +1,519 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "GymBaazi API",
+        "version": "1.0.0",
+        "description": "Free, open-source exercise database API with 1,500+ exercises, GIFs, and comprehensive metadata.",
+        "license": {
+            "name": "AGPL-3.0",
+            "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
+        },
+        "contact": {
+            "name": "GymBaazi",
+            "url": "https://gymbaazi.app"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://gymbaazi.app/api",
+            "description": "Production Server"
+        }
+    ],
+    "paths": {
+        "/exercises": {
+            "get": {
+                "summary": "Get All Exercises",
+                "description": "Retrieve a paginated list of all exercises",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "description": "Number of exercises to skip"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 25,
+                            "maximum": 100
+                        },
+                        "description": "Number of exercises to return (max 100)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExerciseListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/exercises/{id}": {
+            "get": {
+                "summary": "Get Exercise by ID",
+                "description": "Retrieve a single exercise by its ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Exercise ID (e.g., VPPtusI)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExerciseResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Exercise not found"
+                    }
+                }
+            }
+        },
+        "/exercises/equipment/{equipment}": {
+            "get": {
+                "summary": "Filter by Equipment",
+                "description": "Get exercises that use specific equipment",
+                "parameters": [
+                    {
+                        "name": "equipment",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Equipment name (e.g., barbell, dumbbell)"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 25,
+                            "maximum": 100
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilteredExerciseResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/exercises/body/{bodyPart}": {
+            "get": {
+                "summary": "Filter by Body Part",
+                "description": "Get exercises for a specific body part",
+                "parameters": [
+                    {
+                        "name": "bodyPart",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Body part name (e.g., chest, back)"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 25,
+                            "maximum": 100
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilteredExerciseResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/exercises/muscle/{muscle}": {
+            "get": {
+                "summary": "Filter by Muscle",
+                "description": "Get exercises targeting a specific muscle",
+                "parameters": [
+                    {
+                        "name": "muscle",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Muscle name (e.g., biceps, triceps)"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 25,
+                            "maximum": 100
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilteredExerciseResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/muscles": {
+            "get": {
+                "summary": "Get All Muscles",
+                "description": "Retrieve list of all available muscle groups",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MuscleListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/bodyparts": {
+            "get": {
+                "summary": "Get All Body Parts",
+                "description": "Retrieve list of all available body parts",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BodyPartListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/equipments": {
+            "get": {
+                "summary": "Get All Equipment",
+                "description": "Retrieve list of all available equipment types",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EquipmentListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "summary": "Health Check",
+                "description": "Check API status and uptime",
+                "responses": {
+                    "200": {
+                        "description": "API is healthy",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HealthResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Exercise": {
+                "type": "object",
+                "properties": {
+                    "exerciseId": {
+                        "type": "string",
+                        "example": "VPPtusI"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "inverted row bent knees"
+                    },
+                    "gifUrl": {
+                        "type": "string",
+                        "example": "https://gymbaazi.app/gifs/VPPtusI.gif"
+                    },
+                    "targetMuscles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "secondaryMuscles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "bodyParts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "equipments": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "instructions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ExerciseListResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "example": 25
+                    },
+                    "total": {
+                        "type": "integer",
+                        "example": 1500
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "example": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "example": 25
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Exercise"
+                        }
+                    }
+                }
+            },
+            "ExerciseResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Exercise"
+                    }
+                }
+            },
+            "FilteredExerciseResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "equipment": {
+                        "type": "string"
+                    },
+                    "bodyPart": {
+                        "type": "string"
+                    },
+                    "muscle": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Exercise"
+                        }
+                    }
+                }
+            },
+            "MuscleListResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "BodyPartListResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "EquipmentListResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HealthResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "example": "ok"
+                    },
+                    "service": {
+                        "type": "string",
+                        "example": "GymBaazi API"
+                    },
+                    "version": {
+                        "type": "string",
+                        "example": "1.0.0"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "uptime": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}
