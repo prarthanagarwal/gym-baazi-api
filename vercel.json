@@ -53,11 +53,11 @@
     "rewrites": [
         {
             "source": "/docs",
-            "destination": "/public/docs.html"
+            "destination": "/docs.html"
         },
         {
             "source": "/openapi.json",
-            "destination": "/public/openapi.json"
+            "destination": "/openapi.json"
         },
         {
             "source": "/gifs/:path*",
