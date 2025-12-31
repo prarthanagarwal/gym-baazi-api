@@ -46,7 +46,7 @@ Full interactive documentation: **[gymbaazi.app/docs](https://gymbaazi.app/docs)
 This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. See the [LICENSE](LICENSE) file for the full text.
 
 ### Source Attribution
-- Exercise data and media sourced from [ExerciseDB](https://github.com/yuhonas/free-exercise-db) (AGPL-3.0).
+- Exercise data and media sourced from [ExerciseDB](https://github.com/ExerciseDB/exercisedb-api) (AGPL-3.0).
 - This project is a production-ready fork and redistribution of the ExerciseDB dataset.
 
 **Note**: 176 exercises from the original dataset could not be downloaded (404 errors from source). This represents ~12% of the original 1,500 exercises. The remaining 1,324 exercises provide comprehensive coverage.

@@ -599,6 +599,6 @@ copy of the Program in return for a fee.
 
 ADDITIONAL PROJECT NOTICES:
 
-1. DATA SOURCE: This project contains data and media (GIFs) sourced from the ExerciseDB (https://github.com/yuhonas/free-exercise-db), which is also licensed under AGPL-3.0.
+1. DATA SOURCE: This project contains data and media (GIFs) sourced from the ExerciseDB (https://github.com/ExerciseDB/exercisedb-api), which is also licensed under AGPL-3.0.
 2. ATTRIBUTION: Use of this software or data requires attribution to both the GymBaazi project and the original ExerciseDB project.
 3. OPEN SOURCE COMMITMENT: GymBaazi is committed to keeping this API data free and open for the fitness community.
