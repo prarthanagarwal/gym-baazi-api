@@ -14,8 +14,8 @@ function loadExercises() {
 
 export default function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    res.setHeader('CDN-Cache-Control', 'public, max-age=31536000');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.setHeader('CDN-Cache-Control', 'public, max-age=3600');
     res.setHeader('Content-Type', 'application/json');
 
     const { muscle, offset = '0', limit = '25' } = req.query;
