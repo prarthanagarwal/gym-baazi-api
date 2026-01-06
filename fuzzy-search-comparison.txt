@@ -1,0 +1,34 @@
+FUZZY SEARCH LIBRARY COMPARISON
+===============================
+Created: 2026-01-07
+
+Currently Using: Fuse.js
+Alternative:     @m31coding/fuzzy-search (https://github.com/m31coding/fuzzy-search)
+
+
+@m31coding/fuzzy-search
+-----------------------
+• Uses sorted n-grams (3-grams) instead of Levenshtein distance
+• Faster for typo tolerance, especially transposition errors ("sarah" vs "sarha")
+• Built-in prefix + substring search — exact prefix matches rank higher automatically
+• Better multi-word handling ("wolff sarah" matches "sarah wolff" at 95% quality)
+• Newer library, smaller community
+
+
+Fuse.js (current)
+-----------------
+• Uses Levenshtein distance — traditional approach
+• More popular (100k+ weekly downloads, mature library)
+• Easy weighted field configuration
+• Battle-tested, well-documented
+
+
+For Exercise Search Specifically
+--------------------------------
+@m31coding might be slightly better because:
+  1. Handles transpositions better ("bicep" vs "bicpe")
+  2. Naturally prioritizes prefix matches
+  3. Designed for frontend autocomplete
+
+However, Fuse.js is working great and is battle-tested.
+Consider @m31coding/fuzzy-search if performance issues arise.

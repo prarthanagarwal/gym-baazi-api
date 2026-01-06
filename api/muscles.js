@@ -14,8 +14,8 @@ function loadMuscles() {
 
 export default function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.setHeader('CDN-Cache-Control', 'public, max-age=3600');
+    res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=3600');
+    res.setHeader('CDN-Cache-Control', 'public, max-age=300, stale-while-revalidate=3600');
     res.setHeader('Content-Type', 'application/json');
 
     try {
