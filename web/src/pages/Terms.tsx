@@ -43,8 +43,8 @@ const Terms: React.FC = () => {
                 <section>
                     <h2 className="text-xl font-semibold mb-3 text-light-text dark:text-dark-text">4. Exercise Content</h2>
                     <p className="leading-relaxed">
-                        The exercise library, including names, descriptions, and demonstration GIFs, is sourced from
-                        third-party providers. While we strive for accuracy, we cannot guarantee that all information
+                        The exercise library, including names, descriptions, and demonstration GIFs, is hosted on our own
+                        servers. While we strive for accuracy, we cannot guarantee that all information
                         is error-free. Use proper form and judgment when performing any exercise.
                     </p>
                 </section>

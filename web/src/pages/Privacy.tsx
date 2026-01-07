@@ -40,9 +40,9 @@ const Privacy: React.FC = () => {
                 <section>
                     <h2 className="text-xl font-semibold mb-3 text-light-text dark:text-dark-text">Exercise Library</h2>
                     <p className="leading-relaxed">
-                        The app fetches exercise data (names, descriptions, and GIFs) from an external API to provide you
+                        The app fetches exercise data (names, descriptions, and GIFs) from our own hosted servers to provide you
                         with a comprehensive library. This is read-only data and does not involve sending any of your
-                        personal information.
+                        personal information. No third-party services are used.
                     </p>
                 </section>
 
