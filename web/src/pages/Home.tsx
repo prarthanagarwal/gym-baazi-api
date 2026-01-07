@@ -1,117 +1,149 @@
-import React from 'react';
-import { Activity, Calendar, BarChart3, Apple } from 'lucide-react';
+import { Barbell, ShieldCheck, Barn, SquaresFour, CalendarBlank, Timer, DownloadSimple } from '@phosphor-icons/react';
+import { Carousel, Card } from "../components/ui/apple-cards-carousel";
+import { carouselData } from "../data";
+import Navbar from '../components/Navbar';
+
+export function AppleCardsCarouselDemo() {
+    const cards = carouselData.map((card) => (
+        <Card key={card.src} card={card} />
+    ));
+
+    return (
+        <div className="w-full h-full flex items-center justify-center bg-transparent">
+            <Carousel items={cards} />
+        </div>
+    );
+}
 
 const Home: React.FC = () => {
     return (
-        <div className="flex flex-col gap-20 pb-20">
-            {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-accent/5 rounded-full blur-3xl -z-10" />
+        <div className="min-h-screen bg-transparent font-sans selection:bg-accent/30 text-light-text dark:text-dark-text overflow-x-hidden">
+            <Navbar />
 
-                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            {/* Hero Section */}
+            <section className="relative pt-32 pb-20 px-8 md:px-16 overflow-hidden min-h-screen flex items-center">
+
+                <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full">
                     <div className="text-center lg:text-left space-y-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium text-sm">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-                            </span>
-                            Now available on iOS
+                        {/* App Icon */}
+                        <div className="mb-8 mx-auto lg:mx-0 w-max rotate-3">
+                            <img src="/logo.png" alt="GymBaazi Icon" className="w-24 h-24 object-cover rounded-[1rem] shadow-xl" />
                         </div>
 
-                        <h1 className="text-5xl lg:text-7xl font-bold leading-tight text-light-text dark:text-dark-text tracking-tight">
-                            Every Rep <br />
-                            <span className="text-accent">Counts.</span>
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-light-text dark:text-dark-text tracking-tight mb-4">
+                            your no fuss <span className="text-accent">gym buddy</span>
                         </h1>
-
-                        <p className="text-xl text-light-text/70 dark:text-dark-text/70 max-w-xl mx-auto lg:mx-0">
-                            The most intuitive workout tracker for serious lifters. Design your split, track your progress, and verify your gains.
+                        <p className="text-xl lg:text-2xl text-light-text/70 dark:text-dark-text/70 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium pt-4">
+                            A workout-only app that helps you structure your training and keep your progress visible with detailed logs, form GIFs and more.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <button className="flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-accent-hover transition-transform hover:scale-105 shadow-lg shadow-accent/25">
-                                <Apple size={24} />
-                                Download on App Store
-                            </button>
-                            <button className="flex items-center justify-center gap-2 bg-light-secondary dark:bg-dark-secondary text-light-text dark:text-dark-text px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-80 transition-transform hover:scale-105">
-                                Learn More
-                            </button>
-                        </div>
-
-                        <div className="pt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-light-text/50 dark:text-dark-text/50">
-                            {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full bg-gray-300 border-2 border-white dark:border-dark-background" />
-                            ))}
-                            <span>Trusted by 20,000+ lifters</span>
+                        <div className="space-y-4">
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                                <a href="#" className="hover:scale-105 transition-transform">
+                                    <div className="flex w-56 h-16 bg-black text-white rounded-xl items-center justify-center shadow-lg">
+                                        <div className="mr-3">
+                                            <svg viewBox="0 0 384 512" width="35" height="45">
+                                                <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                                            </svg>
+                                        </div>
+                                        <div className="text-left">
+                                            <div className="text-xs">Download on the</div>
+                                            <div className="text-2xl font-semibold font-sans -mt-1">App Store</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="relative mx-auto lg:mr-0">
-                        {/* Phone Mockup Placeholder */}
-                        <div className="relative w-[300px] h-[600px] bg-dark-background border-8 border-gray-900 rounded-[3rem] shadow-2xl overflow-hidden z-10 mx-auto">
-                            <div className="absolute inset-0 flex flex-col pt-12">
-                                <div className="h-8 w-32 bg-gray-900 rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
-                                <div className="flex-1 bg-light-background w-full p-4 space-y-4">
-                                    <div className="h-8 w-2/3 bg-gray-200 rounded-lg animate-pulse"></div>
-                                    <div className="flex gap-4">
-                                        <div className="h-32 w-full bg-accent/20 rounded-2xl animate-pulse"></div>
-                                        <div className="h-32 w-full bg-accent/10 rounded-2xl animate-pulse"></div>
-                                    </div>
-                                    <div className="h-40 w-full bg-gray-100 rounded-2xl animate-pulse"></div>
-                                    <div className="space-y-2">
-                                        <div className="h-4 w-full bg-gray-100 rounded animate-pulse"></div>
-                                        <div className="h-4 w-5/6 bg-gray-100 rounded animate-pulse"></div>
-                                        <div className="h-4 w-4/6 bg-gray-100 rounded animate-pulse"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Blob decorations */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/20 rounded-full blur-3xl -z-10"></div>
+                    <div className="relative mx-auto lg:mr-0 w-full lg:w-[120%] lg:-mr-[20%]">
+                        <AppleCardsCarouselDemo />
                     </div>
                 </div>
             </section>
 
             {/* Features Section */}
-            <section className="px-6 py-20 bg-white/50 dark:bg-black/20 backdrop-blur-sm">
-                <div className="max-w-7xl mx-auto space-y-16">
-                    <div className="text-center max-w-2xl mx-auto space-y-4">
-                        <h2 className="text-4xl font-bold">Everything you need to <span className="text-accent">level up</span></h2>
-                        <p className="text-lg text-light-text/70 dark:text-dark-text/70">
-                            Stop using Notes app. Upgrade your tracking with powerful analytics and intuitive design.
-                        </p>
+            <section id="features" className="px-6 py-20 bg-white/50 dark:bg-black/20 backdrop-blur-sm">
+                <div className="max-w-6xl mx-auto space-y-16">
+                    <div className="text-center max-w-3xl mx-auto space-y-4">
+                        <h2 className="text-4xl font-bold">A toolkit for the love of the game.</h2>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {/* Feature 1 */}
-                        <div className="p-8 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:scale-[1.02] transition-transform duration-300 border border-light-text/5 dark:border-dark-text/5 shadow-sm group">
-                            <div className="w-14 h-14 rounded-2xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
-                                <Activity size={32} />
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {/* Feature 1: Dashboard */}
+                        <div className="p-6 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:shadow-md transition-shadow duration-300 border border-[#33221A] shadow-sm group">
+                            <div className="w-14 h-14 rounded-2xl bg-[#33221A] text-[#f4eed9] flex items-center justify-center mb-6">
+                                <SquaresFour size={32} />
                             </div>
-                            <h3 className="text-2xl font-bold mb-3">Smart Tracking</h3>
+                            <h3 className="text-2xl font-bold mb-3">Focus Dashboard</h3>
                             <p className="text-light-text/70 dark:text-dark-text/70 leading-relaxed">
-                                Log reps, sets, and RPE with ease. Our smart interface remembers your last session.
+                                Start strong with a snapshot of your day; current streak, today's scheduled workout, and daily motivation.
                             </p>
                         </div>
 
-                        {/* Feature 2 */}
-                        <div className="p-8 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:scale-[1.02] transition-transform duration-300 border border-light-text/5 dark:border-dark-text/5 shadow-sm group">
-                            <div className="w-14 h-14 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6 group-hover:-rotate-6 transition-transform">
-                                <Calendar size={32} />
+                        {/* Feature 3: Calendar */}
+                        <div className="p-6 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:shadow-md transition-shadow duration-300 border border-[#33221A] shadow-sm group">
+                            <div className="w-14 h-14 rounded-2xl bg-[#33221A] text-[#f4eed9] flex items-center justify-center mb-6">
+                                <CalendarBlank size={32} />
                             </div>
-                            <h3 className="text-2xl font-bold mb-3">Custom Splits</h3>
+                            <h3 className="text-2xl font-bold mb-3">Flexible History</h3>
                             <p className="text-light-text/70 dark:text-dark-text/70 leading-relaxed">
-                                Build your perfect weekly schedule. Push, Pull, Legs, or Full Body - you decide.
+                                Calendar view of all your sweat sessions. Forgot to log yesterday? No stress. Add past workouts instantly and keep your streak alive.
                             </p>
                         </div>
 
-                        {/* Feature 3 */}
-                        <div className="p-8 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:scale-[1.02] transition-transform duration-300 border border-light-text/5 dark:border-dark-text/5 shadow-sm group">
-                            <div className="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
-                                <BarChart3 size={32} />
+                        {/* Feature 4: Library */}
+                        <div className="p-6 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:shadow-md transition-shadow duration-300 border border-[#33221A] shadow-sm group">
+                            <div className="w-14 h-14 rounded-2xl bg-[#33221A] text-[#f4eed9] flex items-center justify-center mb-6">
+                                <Barbell size={32} />
                             </div>
-                            <h3 className="text-2xl font-bold mb-3">Visual Progress</h3>
+                            <h3 className="text-2xl font-bold mb-3">1200+ Exercises</h3>
                             <p className="text-light-text/70 dark:text-dark-text/70 leading-relaxed">
-                                Watch your strength grow with detailed charts and volume analytics.
+                                From <em>Upper Arms</em> to <em>Cardio</em>. A massive library sorted by body part, complete with clear GIFs so you always know the form.
+                            </p>
+                        </div>
+
+                        {/* Feature 5: Privacy */}
+                        <div className="p-6 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:shadow-md transition-shadow duration-300 border border-[#33221A] shadow-sm group">
+                            <div className="w-14 h-14 rounded-2xl bg-[#33221A] text-[#f4eed9] flex items-center justify-center mb-6">
+                                <ShieldCheck size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold mb-3">100% Private</h3>
+                            <p className="text-light-text/70 dark:text-dark-text/70 leading-relaxed">
+                                Your data lives on your device, not in the cloud. Total privacy, offline access, and zero tracking. Just you and your weights.
+                            </p>
+                        </div>
+
+                        {/* Feature 6: Simplicity */}
+                        <div className="p-6 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:shadow-md transition-shadow duration-300 border border-[#33221A] shadow-sm group">
+                            <div className="w-14 h-14 rounded-2xl bg-[#33221A] text-[#f4eed9] flex items-center justify-center mb-6">
+                                <Barn size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold mb-3">No Fluff</h3>
+                            <p className="text-light-text/70 dark:text-dark-text/70 leading-relaxed">
+                                No social feeds, no diet ads. Just a clean tool designed to help you lift and track progress.
+                            </p>
+                        </div>
+
+                        {/* Feature 7: Rest Timer */}
+                        <div className="p-6 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:shadow-md transition-shadow duration-300 border border-[#33221A] shadow-sm group">
+                            <div className="w-14 h-14 rounded-2xl bg-[#33221A] text-[#f4eed9] flex items-center justify-center mb-6">
+                                <Timer size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold mb-3">Smart Rest Timer</h3>
+                            <p className="text-light-text/70 dark:text-dark-text/70 leading-relaxed">
+                                Auto-starts after every set. Background notifications ensure you never miss your next lift, even if you switch apps.
+                            </p>
+                        </div>
+
+                        {/* Feature 8: Data Export */}
+                        <div className="p-6 rounded-[2rem] bg-light-secondary dark:bg-dark-secondary hover:shadow-md transition-shadow duration-300 border border-[#33221A] shadow-sm group">
+                            <div className="w-14 h-14 rounded-2xl bg-[#33221A] text-[#f4eed9] flex items-center justify-center mb-6">
+                                <DownloadSimple size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold mb-3">Your Data, Portable</h3>
+                            <p className="text-light-text/70 dark:text-dark-text/70 leading-relaxed">
+                                Full JSON export and import. Back up your history or take it with you. You own your workout data, always.
                             </p>
                         </div>
                     </div>
@@ -119,20 +151,29 @@ const Home: React.FC = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="px-6 py-20">
-                <div className="max-w-5xl mx-auto bg-gradient-to-r from-accent to-orange-600 rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-accent/30">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+            <section className="px-6 pt-12 pb-32 bg-white/50 dark:bg-black/20 backdrop-blur-sm">
+                <div className="max-w-6xl mx-auto bg-gradient-to-r from-[#ED4264] to-[#FFEDBC] rounded-[3rem] p-10 md:p-14 text-center text-[#33221A] relative overflow-hidden shadow-2xl shadow-accent/20">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
-                    <div className="relative z-10 space-y-8">
-                        <h2 className="text-4xl md:text-5xl font-bold">Ready to make gains?</h2>
-                        <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                            Join thousands of lifters who have transformed their training with GymBaazi.
+                    <div className="relative z-10 space-y-6">
+                        <h2 className="text-3xl md:text-5xl font-bold">Ready to start your fitness journey?</h2>
+                        <p className="text-lg md:text-xl text-[#33221A]/80 max-w-2xl mx-auto">
+                            Have a buddy to keep you in check.
                         </p>
-                        <button className="inline-flex items-center gap-2 bg-white text-accent px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg">
-                            <Apple size={24} />
-                            Download for free
-                        </button>
+                        <a href="#" className="inline-block hover:scale-105 transition-transform pt-2">
+                            <div className="flex w-56 h-16 bg-black text-white rounded-xl items-center justify-center shadow-lg mx-auto">
+                                <div className="mr-3">
+                                    <svg viewBox="0 0 384 512" width="35" height="45">
+                                        <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                                    </svg>
+                                </div>
+                                <div className="text-left">
+                                    <div className="text-xs">Download on the</div>
+                                    <div className="text-2xl font-semibold font-sans -mt-1">App Store</div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
