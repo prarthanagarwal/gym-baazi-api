@@ -45,8 +45,8 @@ const Footer: React.FC = () => {
 
                 {/* Copyright */}
                 <div className="pt-8 border-t border-light-text/5 dark:border-dark-text/5 text-center">
-                    <p className="text-xs text-light-text/40 dark:text-dark-text/40 font-medium">
-                        © 2024 GymBaazi. All rights reserved.
+                    <p className="text-sm text-light-text/40 dark:text-dark-text/40 font-medium">
+                        © 2026 GymBaazi. All rights reserved.
                     </p>
                 </div>
             </div>

@@ -63,5 +63,6 @@
             "source": "/gifs/:path*",
             "destination": "/gifs/:path*"
         }
-    ]
+    ],
+    "devCommand": "cd web && npm run dev"
 }

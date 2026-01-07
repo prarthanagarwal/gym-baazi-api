@@ -4,7 +4,7 @@
     "description": "Self-hosted ExerciseDB API for GymBaazi iOS app",
     "main": "api/exercises.js",
     "scripts": {
-        "dev": "vercel dev",
+        "start": "vercel dev",
         "deploy": "vercel --prod"
     },
     "keywords": [
