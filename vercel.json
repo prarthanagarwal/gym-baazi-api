@@ -62,6 +62,10 @@
         {
             "source": "/gifs/:path*",
             "destination": "/gifs/:path*"
+        },
+        {
+            "source": "/((?!api|gifs|docs|openapi.json|assets|favicon|logo.png).*)",
+            "destination": "/index.html"
         }
     ],
     "devCommand": "cd web && npm run dev"
