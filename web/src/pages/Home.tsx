@@ -2,11 +2,19 @@ import { Barbell, ShieldCheck, Barn, SquaresFour, CalendarBlank, Timer, Download
 import { Carousel, Card } from "../components/ui/apple-cards-carousel";
 import { carouselData } from "../data";
 import Navbar from '../components/Navbar';
+import { useEffect } from 'react';
+import { scheduleImagePreload } from '../lib/image-preloader';
 
 export function AppleCardsCarouselDemo() {
     const cards = carouselData.map((card) => (
         <Card key={card.src} card={card} />
     ));
+
+    // Preload carousel images during browser idle time
+    useEffect(() => {
+        const imageSources = carouselData.map(card => card.src);
+        scheduleImagePreload(imageSources);
+    }, []);
 
     return (
         <div className="w-full h-full flex items-center justify-center bg-transparent">
@@ -27,7 +35,7 @@ const Home: React.FC = () => {
                     <div className="text-center lg:text-left space-y-8">
                         {/* App Icon */}
                         <div className="mb-8 mx-auto lg:mx-0 w-max rotate-3">
-                            <img src="/logo.png" alt="GymBaazi Icon" className="w-24 h-24 object-cover rounded-[1rem] shadow-xl" />
+                            <img src="/logo.webp" alt="GymBaazi Icon" className="w-24 h-24 object-cover rounded-[1rem] shadow-xl" />
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-light-text dark:text-dark-text tracking-tight mb-4">
@@ -39,7 +47,7 @@ const Home: React.FC = () => {
 
                         <div className="space-y-4">
                             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-                                <a href="#" className="hover:scale-105 transition-transform">
+                                <a href="https://apps.apple.com/in/app/gymbaazi/id6756263491" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform">
                                     <div className="flex w-56 h-16 bg-black text-white rounded-xl items-center justify-center shadow-lg">
                                         <div className="mr-3">
                                             <svg viewBox="0 0 384 512" width="35" height="45">
@@ -161,7 +169,7 @@ const Home: React.FC = () => {
                         <p className="text-lg md:text-xl text-[#33221A]/80 max-w-2xl mx-auto">
                             Have a buddy to keep you in check.
                         </p>
-                        <a href="#" className="inline-block hover:scale-105 transition-transform pt-2">
+                        <a href="https://apps.apple.com/in/app/gymbaazi/id6756263491" target="_blank" rel="noopener noreferrer" className="inline-block hover:scale-105 transition-transform pt-2">
                             <div className="flex w-56 h-16 bg-black text-white rounded-xl items-center justify-center shadow-lg mx-auto">
                                 <div className="mr-3">
                                     <svg viewBox="0 0 384 512" width="35" height="45">
