@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import Fuse from 'fuse.js';
 
 let exercisesData = null;
 let fuseIndex = null;
+let cachedEtag = null;
 
 // Fuse.js configuration optimized for exercise names
 const fuseOptions = {
@@ -32,6 +34,10 @@ function loadExercises() {
         const filePath = path.join(process.cwd(), 'exercisedb_data', 'all_exercises_api.json');
         const data = fs.readFileSync(filePath, 'utf8');
         exercisesData = JSON.parse(data);
+        
+        // Calculate ETag once
+        cachedEtag = `"${crypto.createHash('md5').update(data).digest('hex')}"`;
+        
         return exercisesData;
     } catch (error) {
         console.error('Error loading exercises:', error);
@@ -61,6 +67,17 @@ export default function handler(req, res) {
 
     try {
         const apiData = loadExercises();
+        
+        // ETag check
+        if (cachedEtag) {
+            res.setHeader('ETag', cachedEtag);
+            const clientEtag = req.headers['if-none-match'];
+            const cleanEtag = (etag) => etag ? etag.replace(/^W\//, '') : null;
+            if (cleanEtag(clientEtag) === cleanEtag(cachedEtag)) {
+                return res.status(304).end();
+            }
+        }
+
         const exercises = apiData.data || [];
 
         const { offset = '0', limit = '25', search, sortBy, sortOrder } = req.query;
